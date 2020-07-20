@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/planeta")
+@RequestMapping(value="/api")
 @Api(value = "API REST PLANETAS")
 @CrossOrigin(origins = "*")
 @Service
@@ -41,7 +41,7 @@ public class PlanetaResource {
     @GetMapping("/planetaNome/{nome}")
     @ApiOperation(value="Encontra planeta por nome.")
     public Planeta listaPlanetaPorNome (@PathVariable(value = "nome") String nome) {
-        return planetaRepository.findByName(nome);
+        return planetaRepository.findByNome(nome);
     }
 
     @PutMapping

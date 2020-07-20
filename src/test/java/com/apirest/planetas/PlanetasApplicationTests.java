@@ -31,18 +31,18 @@ class PlanetasApplicationTests {
 	@Test
 	public void testaUmPlaneta() {
 		Planeta planeta = planetaRepository.findPlanetaById(1);
-		Assert.assertEquals(planeta.getId().longValue(), 1);
+		Assert.assertEquals(planeta.getId(), 1);
 	}
 
 	@Test
 	public void testaPlanetaPorNome() {
-		Planeta planeta = planetaRepository.findByName("Terra");
+		Planeta planeta = planetaRepository.findByNome("Terra");
 		Assert.assertNotNull(planeta);
 	}
 
 	@Test
 	public void testaPlanetaInexistente() {
-		Planeta planeta = planetaRepository.findByName("Terra");
+		Planeta planeta = planetaRepository.findByNome("Plutao");
 		Assert.assertNull(planeta);
 	}
 

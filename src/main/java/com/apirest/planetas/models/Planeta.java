@@ -3,7 +3,6 @@ package com.apirest.planetas.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Document
@@ -12,28 +11,26 @@ public class Planeta implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private Integer id;
+    private String id;
 
     private String nome;
 
     private String clima;
 
-    private long terreno;
+    private String terreno;
 
-    public Planeta(Integer id, String nome, String clima, long terreno) {
+    public Planeta(String id, String nome, String clima, String terreno) {
         this.id = id;
         this.nome = nome;
         this.clima = clima;
         this.terreno = terreno;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -53,7 +50,7 @@ public class Planeta implements Serializable {
         this.clima = clima;
     }
 
-    public Long getTerreno() {
+    public String getTerreno() {
         return terreno;
     }
 
