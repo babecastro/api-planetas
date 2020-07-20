@@ -1,10 +1,12 @@
 package com.apirest.planetas.models;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name="Planeta")
+@Document
 public class Planeta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +20,14 @@ public class Planeta implements Serializable {
 
     private String clima;
 
-    private Long Terreno;
+    private long terreno;
+
+    public Planeta(Integer id, String nome, String clima, long terreno) {
+        this.id = id;
+        this.nome = nome;
+        this.clima = clima;
+        this.terreno = terreno;
+    }
 
     public Integer getId() {
         return id;
@@ -45,10 +54,20 @@ public class Planeta implements Serializable {
     }
 
     public Long getTerreno() {
-        return Terreno;
+        return terreno;
     }
 
     public void setTerreno(Long terreno) {
-        Terreno = terreno;
+        terreno = terreno;
+    }
+
+    @Override
+    public String toString() {
+        return "Planeta{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", clima='" + clima + '\'' +
+                ", terreno=" + terreno +
+                '}';
     }
 }
