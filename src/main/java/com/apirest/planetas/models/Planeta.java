@@ -11,7 +11,7 @@ public class Planeta implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
+    private Integer id;
 
     private String nome;
 
@@ -19,18 +19,21 @@ public class Planeta implements Serializable {
 
     private String terreno;
 
-    public Planeta(String id, String nome, String clima, String terreno) {
+    private Integer qtdFilmes;
+
+    public Planeta(Integer id, String nome, String clima, String terreno, Integer qtdFilmes) {
         this.id = id;
         this.nome = nome;
         this.clima = clima;
         this.terreno = terreno;
+        this.qtdFilmes = qtdFilmes;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
