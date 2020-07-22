@@ -2,18 +2,17 @@
 Api Rest para mapeamento de planetas.
 
 Link para teste no swagger: 
-
+https://servicoplanetas.azurewebsites.net/swagger-ui.html#/
 
 Funcionalidades: 
 - Adicionar um novo planeta
 - Listar por id.
 - Listar por Nome.
 - Listar todos os planetas
-- Atualizar um planeta
 - Deletar um planeta
 
 Deploy:
-- Heroku
+- Azure
 
 Banco utilizado: 
 - Mongodb
