@@ -1,5 +1,6 @@
 package com.apirest.planetas.models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +12,8 @@ public class Planeta implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    private ObjectId _id;
+
     private Integer id;
 
     private String nome;
@@ -21,12 +24,16 @@ public class Planeta implements Serializable {
 
     private Integer qtdFilmes;
 
-    public Planeta(Integer id, String nome, String clima, String terreno, Integer qtdFilmes) {
-        this.id = id;
-        this.nome = nome;
-        this.clima = clima;
-        this.terreno = terreno;
-        this.qtdFilmes = qtdFilmes;
+    public Planeta() {
+
+    }
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public Integer getId() {
@@ -57,17 +64,27 @@ public class Planeta implements Serializable {
         return terreno;
     }
 
-    public void setTerreno(Long terreno) {
-        terreno = terreno;
+    public void setTerreno(String terreno) {
+        this.terreno = terreno;
+    }
+
+    public Integer getQtdFilmes() {
+        return qtdFilmes;
+    }
+
+    public void setQtdFilmes(Integer qtdFilmes) {
+        this.qtdFilmes = qtdFilmes;
     }
 
     @Override
     public String toString() {
         return "Planeta{" +
-                "id=" + id +
+                "_id=" + _id +
+                ", id=" + id +
                 ", nome='" + nome + '\'' +
                 ", clima='" + clima + '\'' +
-                ", terreno=" + terreno +
+                ", terreno='" + terreno + '\'' +
+                ", qtdFilmes=" + qtdFilmes +
                 '}';
     }
 }
