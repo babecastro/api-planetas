@@ -1,6 +1,6 @@
 package com.apirest.planetas.resources;
 
-import com.apirest.planetas.controller.StarWarsController;
+import com.apirest.planetas.components.StarWarsComponent;
 import com.apirest.planetas.models.Planeta;
 import com.apirest.planetas.models.PlanetaStarWars;
 import com.apirest.planetas.repository.PlanetaRepository;
@@ -27,7 +27,7 @@ public class PlanetaResource {
     private PlanetaRepository planetaRepository;
 
     @Autowired
-    private StarWarsController starWarsController;
+    private StarWarsComponent starWarsComponent;
 
     @PostMapping("/planeta")
     @ApiOperation(value="Adiciona um novo planeta.")
@@ -82,7 +82,7 @@ public class PlanetaResource {
      */
     public Integer adicionaQuantidadeFilmes(Integer id) {
         Planeta planeta = new Planeta();
-        PlanetaStarWars planetaStarWars = starWarsController.getPlaneta(id);
+        PlanetaStarWars planetaStarWars = starWarsComponent.getPlaneta(id);
         planeta.setQtdFilmes(planetaStarWars.getFilms().size());
         return planeta.getQtdFilmes();
     }

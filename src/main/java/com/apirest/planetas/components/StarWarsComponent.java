@@ -1,17 +1,17 @@
-package com.apirest.planetas.controller;
+package com.apirest.planetas.components;
 
 import com.apirest.planetas.models.PlanetaStarWars;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 /**
  * Bárbara Castro
  */
-@Service
-public class StarWarsController {
+@Component
+public class StarWarsComponent {
 
     @Autowired
     private WebClient webClient;
