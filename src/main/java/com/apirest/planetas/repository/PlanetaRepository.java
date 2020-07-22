@@ -22,4 +22,8 @@ public interface PlanetaRepository extends MongoRepository <Planeta, String> {
      */
     Planeta findPlanetaById(Integer id);
 
+    /**
+     * @param id
+     */
+    void deleteById(Integer id);
 }

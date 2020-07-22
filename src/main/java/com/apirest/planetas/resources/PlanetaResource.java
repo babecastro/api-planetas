@@ -31,8 +31,12 @@ public class PlanetaResource {
 
     @PostMapping("/planeta")
     @ApiOperation(value="Adiciona um novo planeta.")
-    public Planeta adicionaPlaneta(@RequestBody Planeta planeta) {
-        return planetaRepository.save(planeta);
+    public Planeta adicionaPlaneta(@RequestBody Planeta planeta) throws Exception {
+        Planeta planetaExistente = planetaRepository.findPlanetaById(planeta.getId());
+        if(!planetaExistente.getId().equals(planeta.getId())) {
+            return planetaRepository.save(planeta);
+        }
+        throw new Exception("Nao foi possivel salvar esse planeta. Id Existente.");
     }
 
     @GetMapping("/planeta")
@@ -66,16 +70,10 @@ public class PlanetaResource {
         }
     }
 
-    @PutMapping("/planeta")
-    @ApiOperation(value="Atualiza Planeta.")
-    public Planeta atualizaPlaneta(@RequestBody Planeta planeta) {
-        return planetaRepository.save(planeta);
-    }
-
-    @DeleteMapping("/planeta")
+    @DeleteMapping("/deletaPlaneta/{id}")
     @ApiOperation(value="Deleta um planeta.")
-    public void deletaPlaneta(@RequestBody Planeta planeta) {
-        planetaRepository.delete(planeta);
+    public void deletaPlaneta(@PathVariable(value="id") Integer id) {
+        planetaRepository.deleteById(id);
     }
 
     /**
