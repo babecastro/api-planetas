@@ -92,22 +92,17 @@
         <artifactId>azure-webapp-maven-plugin</artifactId>
         <version>1.9.0</version>
         <configuration>
-          <appSettings>
-            <property>
-              <name>JAVA_OPTS</name>
-              <value>-Dserver.port=80</value>
-            </property>
-          </appSettings>
           <schemaVersion>V2</schemaVersion>
-          <resourceGroup>planetas-1595439257283-rg</resourceGroup>
-          <appName>planetas-1595439257283</appName>
-          <pricingTier>P1v2</pricingTier>
-          <region>westus</region>
+          <resourceGroup>api-planetas</resourceGroup>
+          <appName>planetas</appName>
+          
           <runtime>
-            <os>windows</os>
-            <javaVersion>1.8.0_25</javaVersion>
-            <webContainer>java 8</webContainer>
+            <os>linux</os>
+            <javaVersion>jre8</javaVersion>
+            <webContainer>tomcat 9.0</webContainer>
           </runtime>
+
+          <!-- End of App Settings  -->
           <deployment>
             <resources>
               <resource>
@@ -119,6 +114,7 @@
             </resources>
           </deployment>
         </configuration>
+
       </plugin>
     </plugins>
   </build>

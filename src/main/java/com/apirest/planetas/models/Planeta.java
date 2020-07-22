@@ -16,15 +16,10 @@ public class Planeta implements Serializable {
 
     @Id
     private ObjectId _id;
-
     private Integer id;
-
     private String nome;
-
     private String clima;
-
     private String terreno;
-
     private Integer qtdFilmes;
 
     public Planeta() {

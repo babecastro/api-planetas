@@ -13,16 +13,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 @SpringBootApplication
 public class PlanetasApplication {
 
+	public static void main(String[] args) {
+		SpringApplication.run(PlanetasApplication.class, args);
+	}
+
 	@Bean
 	public WebClient webClient(WebClient.Builder builder){
 		return builder.baseUrl("https://swapi.dev/api/")
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 				.build();
 	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(PlanetasApplication.class, args);
-	}
-
 
 }
