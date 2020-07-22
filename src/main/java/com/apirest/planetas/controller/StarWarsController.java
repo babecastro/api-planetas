@@ -1,19 +1,25 @@
 package com.apirest.planetas.controller;
 
 import com.apirest.planetas.models.PlanetaStarWars;
-import com.apirest.planetas.repository.PlanetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+/**
+ * Bárbara Castro
+ */
 @Service
 public class StarWarsController {
 
     @Autowired
     private WebClient webClient;
 
+    /**
+     * @param id
+     * @return planeta da api do Star Wars.
+     */
     public PlanetaStarWars getPlaneta(Integer id) {
         Mono<PlanetaStarWars> planeta = this.webClient.method(HttpMethod.GET)
                 .uri("planets/{id}/", id)

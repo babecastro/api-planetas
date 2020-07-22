@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Bárbara Castro
+ */
 @RestController
 @RequestMapping(value="/api")
 @Api(value = "API REST PLANETAS")
@@ -75,6 +78,10 @@ public class PlanetaResource {
         planetaRepository.delete(planeta);
     }
 
+    /**
+     * @param id
+     * @return quantidade de filmes da api do Star Wars.
+     */
     public Integer adicionaQuantidadeFilmes(Integer id) {
         Planeta planeta = new Planeta();
         PlanetaStarWars planetaStarWars = starWarsController.getPlaneta(id);
@@ -82,6 +89,9 @@ public class PlanetaResource {
         return planeta.getQtdFilmes();
     }
 
+    /**
+     * @return planetas.
+     */
     private List<Planeta> getPlanetas() {
         List<Planeta> planetasRepository = planetaRepository.findAll();
         List<Planeta> planetas = new ArrayList<>();

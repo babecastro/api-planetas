@@ -2,6 +2,9 @@ package com.apirest.planetas.models;
 
 import java.util.List;
 
+/**
+ * Bárbara Castro
+ */
 public class PlanetaStarWars {
 
     private Integer id;
