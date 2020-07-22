@@ -95,6 +95,8 @@
           <schemaVersion>V2</schemaVersion>
           <resourceGroup>api-planetas</resourceGroup>
           <appName>planetas</appName>
+          <pricingTier>P1v2</pricingTier>
+          <region>westus</region>
 
           <runtime>
             <os>linux</os>
