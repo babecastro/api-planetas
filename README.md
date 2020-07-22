@@ -9,7 +9,7 @@ Funcionalidades:
 - Listar por id.
 - Listar por Nome.
 - Listar todos os planetas
-- Deletar um planeta
+- Deletar um planeta por id. 
 
 Deploy:
 - Azure
