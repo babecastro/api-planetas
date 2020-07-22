@@ -95,7 +95,7 @@
           <schemaVersion>V2</schemaVersion>
           <resourceGroup>api-planetas</resourceGroup>
           <appName>planetas</appName>
-          
+
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
