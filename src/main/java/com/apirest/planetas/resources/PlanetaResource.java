@@ -1,6 +1,7 @@
 package com.apirest.planetas.resources;
 
 import com.apirest.planetas.components.StarWarsComponent;
+import com.apirest.planetas.controller.PlanetaService;
 import com.apirest.planetas.models.Planeta;
 import com.apirest.planetas.models.PlanetaStarWars;
 import com.apirest.planetas.repository.PlanetaRepository;
@@ -27,82 +28,36 @@ public class PlanetaResource {
     private PlanetaRepository planetaRepository;
 
     @Autowired
-    private StarWarsComponent starWarsComponent;
+    private PlanetaService planetaService;
 
     @PostMapping("/planeta")
     @ApiOperation(value="Adiciona um novo planeta.")
     public Planeta adicionaPlaneta(@RequestBody Planeta planeta) throws Exception {
-        Planeta planetaExistente = planetaRepository.findPlanetaById(planeta.getId());
-        if(!planetaExistente.getId().equals(planeta.getId())) {
-            return planetaRepository.save(planeta);
-        }
-        throw new Exception("Nao foi possivel salvar esse planeta. Id Existente.");
+        return planetaService.adicionaPlaneta(planeta);
     }
 
     @GetMapping("/planeta")
     @ApiOperation(value="Lista todos os planetas.")
     public List<Planeta> listaPlanetas() {
-        List<Planeta> planetas = getPlanetas();
-        return planetas;
+       return planetaService.getPlanetas();
     }
 
     @GetMapping("/planeta/{id}")
     @ApiOperation(value="Encontra planeta por id.")
     public Planeta listaUnicoPlaneta (@PathVariable(value="id") Integer id) throws Exception {
-        try {
-            Planeta planeta = planetaRepository.findPlanetaById(id);
-            planeta.setQtdFilmes(adicionaQuantidadeFilmes(id));
-            return planeta;
-        } catch (Exception e) {
-            throw new Exception("Não foi possível encontrar planeta com esse id. Tente novamente.", e);
-        }
+        return planetaService.findPlanetaById(id);
     }
 
     @GetMapping("/planetaNome/{nome}")
     @ApiOperation(value="Encontra planeta por nome.")
     public Planeta listaPlanetaPorNome (@PathVariable(value = "nome") String nome) throws Exception {
-        try {
-            Planeta planeta = planetaRepository.findByNome(nome);
-            planeta.setQtdFilmes(adicionaQuantidadeFilmes(planeta.getId()));
-            return planeta;
-        } catch (Exception e) {
-            throw new Exception("Nao foi possível encontrar Planeta com esse nome. Tente novamente.", e);
-        }
+        return planetaService.findPlanetaByName(nome);
     }
 
     @DeleteMapping("/deletaPlaneta/{id}")
     @ApiOperation(value="Deleta um planeta.")
     public void deletaPlaneta(@PathVariable(value="id") Integer id) {
-        planetaRepository.deleteById(id);
+        planetaService.deletaPlaneta(id);
     }
 
-    /**
-     * @param id
-     * @return quantidade de filmes da api do Star Wars.
-     */
-    public Integer adicionaQuantidadeFilmes(Integer id) {
-        Planeta planeta = new Planeta();
-        PlanetaStarWars planetaStarWars = starWarsComponent.getPlaneta(id);
-        planeta.setQtdFilmes(planetaStarWars.getFilms().size());
-        return planeta.getQtdFilmes();
-    }
-
-    /**
-     * @return planetas.
-     */
-    private List<Planeta> getPlanetas() {
-        List<Planeta> planetasRepository = planetaRepository.findAll();
-        List<Planeta> planetas = new ArrayList<>();
-        for(Planeta planeta1 : planetasRepository) {
-            Planeta planeta = new Planeta();
-            planeta.set_id(planeta1.get_id());
-            planeta.setId(planeta1.getId());
-            planeta.setNome(planeta1.getNome());
-            planeta.setClima(planeta1.getClima());
-            planeta.setTerreno(planeta1.getTerreno());
-            planeta.setQtdFilmes(adicionaQuantidadeFilmes(planeta1.getId()));
-            planetas.add(planeta);
-        }
-        return planetas;
-    }
 }
