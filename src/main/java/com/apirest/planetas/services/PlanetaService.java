@@ -1,4 +1,4 @@
-package com.apirest.planetas.controller;
+package com.apirest.planetas.services;
 
 import com.apirest.planetas.components.StarWarsComponent;
 import com.apirest.planetas.models.Planeta;

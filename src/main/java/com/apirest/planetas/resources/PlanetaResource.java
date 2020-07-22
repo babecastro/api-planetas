@@ -1,17 +1,13 @@
 package com.apirest.planetas.resources;
 
-import com.apirest.planetas.components.StarWarsComponent;
-import com.apirest.planetas.controller.PlanetaService;
+import com.apirest.planetas.services.PlanetaService;
 import com.apirest.planetas.models.Planeta;
-import com.apirest.planetas.models.PlanetaStarWars;
-import com.apirest.planetas.repository.PlanetaRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,9 +19,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @Service
 public class PlanetaResource {
-
-    @Autowired
-    private PlanetaRepository planetaRepository;
 
     @Autowired
     private PlanetaService planetaService;
