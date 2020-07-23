@@ -12,7 +12,7 @@ Funcionalidades:
 - Deletar um planeta por id. 
 
 Deploy:
-- Azure
+- Azure DevOps
 
 Banco utilizado: 
 - Mongodb
